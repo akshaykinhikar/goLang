@@ -39,4 +39,8 @@ func main() {
 	e = 123
 	fmt.Println("value of int e = ", e)
 
+	// dataType - const
+	const f = 1234
+	fmt.Println("value of const f = ", f)
+
 }
