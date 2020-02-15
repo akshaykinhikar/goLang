@@ -18,6 +18,14 @@ func main() {
 
 	b = true
 
-	fmt.Println("value of b= ", b)
+	fmt.Println("value of b = ", b)
+
+	// dataType
+	// float
+	var c float32
+
+	c = 15.01
+
+	fmt.Println("value of c = ", c)
 
 }
