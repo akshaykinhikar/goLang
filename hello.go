@@ -10,7 +10,7 @@ func main() {
 	var a int32
 
 	a = 15
-	fmt.Println("value for a =", a)
+	fmt.Println("value of int a =", a)
 
 	// dataType
 	// boolean dataType
@@ -18,7 +18,7 @@ func main() {
 
 	b = true
 
-	fmt.Println("value of b = ", b)
+	fmt.Println("value of bool b = ", b)
 
 	// dataType
 	// float
@@ -26,6 +26,17 @@ func main() {
 
 	c = 15.01
 
-	fmt.Println("value of c = ", c)
+	fmt.Println("value of float c = ", c)
+
+	// dataType - string
+
+	var d string
+	d = "lorem"
+	fmt.Println("value of string d = ", d)
+
+	// datatype - Integer
+	var e int
+	e = 123
+	fmt.Println("value of int e = ", e)
 
 }
