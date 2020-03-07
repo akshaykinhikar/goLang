@@ -4,6 +4,17 @@ import (
 	"fmt"
 )
 
+func greaterNo(i int, j int) int {
+	if i < j {
+		fmt.Println("greater no is ", j)
+		return j
+	} else {
+		fmt.Println("greater no is ", i)
+		return i
+	}
+
+}
+
 func main() {
 	// print stmt
 	fmt.Println("Hello, world.")
@@ -71,5 +82,9 @@ func main() {
 		}
 
 	}
+
+	// function
+
+	fmt.Println("function will print greater value", greaterNo(1, 2))
 
 }
