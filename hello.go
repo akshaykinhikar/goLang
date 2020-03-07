@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"time"
 )
 
 func main() {
@@ -50,12 +49,19 @@ func main() {
 	i := 10
 	for i > 0 {
 		fmt.Println("Value of i is ", i)
-		time.Sleep(time.Second)
+		// time.Sleep(time.Second)
 		i = i - 1
 	}
 
 	for i := 10; i > 0; i-- {
 		fmt.Println("Value of i is ", i)
+	}
+
+	// if statements
+	j := 10
+
+	if j > 0 {
+		fmt.Println("value of i is greater than 0")
 	}
 
 }
