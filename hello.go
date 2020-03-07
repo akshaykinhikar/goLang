@@ -64,4 +64,12 @@ func main() {
 		fmt.Println("value of i is greater than 0")
 	}
 
+	for i := 0; i <= 10; i++ {
+		switch i {
+		case 10:
+			fmt.Println("got 10")
+		}
+
+	}
+
 }
