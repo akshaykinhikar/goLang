@@ -54,4 +54,8 @@ func main() {
 		i = i - 1
 	}
 
+	for i := 10; i > 0; i-- {
+		fmt.Println("Value of i is ", i)
+	}
+
 }
