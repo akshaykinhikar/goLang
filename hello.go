@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func main() {
 	// print stmt
@@ -42,5 +45,13 @@ func main() {
 	// dataType - const
 	const f = 1234
 	fmt.Println("value of const f = ", f)
+
+	// for loop
+	i := 10
+	for i > 0 {
+		fmt.Println("Value of i is ", i)
+		time.Sleep(time.Second)
+		i = i - 1
+	}
 
 }
