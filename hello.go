@@ -12,7 +12,18 @@ func greaterNo(i int, j int) int {
 		fmt.Println("greater no is ", i)
 		return i
 	}
+}
 
+func addByValue(a int, b int, c int) int {
+	c = a + b
+	// fmt.Println(c)
+	return c
+}
+
+func addByReference(a int, b int, c *int) int {
+	*c = a + b
+	// fmt.Println(*c)
+	return *c
 }
 
 func main() {
@@ -86,5 +97,25 @@ func main() {
 	// function
 
 	fmt.Println("function will print greater value", greaterNo(1, 2))
+
+	// byValue vs byReference
+
+	// normal flow
+
+	// byValue(5, 2, 3)
+	var c1 int
+	// fmt.Println("", addByValue(5, 2, c1))
+	fmt.Println("effect of using byValue on c1 --> ", c1)
+
+	// add by reference
+
+	// fmt.Println("", addByReference(5, 2, &c1))
+	fmt.Println("effect of using by reference on c1--> ", c1)
+
+	// Array
+
+	arr := [5]int{0, 21, 33, 22, 11}
+
+	fmt.Println(arr)
 
 }
