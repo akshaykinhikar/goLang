@@ -56,10 +56,36 @@ func createItem(w http.ResponseWriter, r *http.Request) {
 }
 
 func updateItem(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
 
+	params := mux.Vars(r)
+
+	for index, item := range items {
+		if item.ID == params["id"] {
+			items = append(items[:index], items[index+1:]...)
+			var item Item
+			_ = json.NewDecoder(r.Body).Decode(&item)
+			item.ID = strconv.Itoa(rand.Intn(100000000))
+			items = append(items, item)
+			json.NewEncoder(w).Encode(item)
+			return
+		}
+	}
+	json.NewEncoder(w).Encode(items)
 }
 
 func deleteItem(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+
+	params := mux.Vars(r)
+
+	for index, item := range items {
+		if item.ID == params["id"] {
+			items = append(items[:index], items[index+1:]...)
+			break
+		}
+	}
+	json.NewEncoder(w).Encode(items)
 
 }
 
@@ -73,7 +99,7 @@ func main() {
 	r.HandleFunc("/api/items", getItems).Methods("GET")
 	r.HandleFunc("/api/getitem/{id}", getItemByID).Methods("GET")
 	r.HandleFunc("/api/additem", createItem).Methods("POST")
-	r.HandleFunc("/api/updateitem", updateItem).Methods("PUT")
-	r.HandleFunc("/api/item/deleteitem", deleteItem).Methods("DELETE")
+	r.HandleFunc("/api/updateitem/{id}", updateItem).Methods("PUT")
+	r.HandleFunc("/api/deleteitem/{id}", deleteItem).Methods("DELETE")
 	log.Fatal(http.ListenAndServe(":8000", r))
 }
