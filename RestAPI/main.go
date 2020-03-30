@@ -32,7 +32,17 @@ func getItems(w http.ResponseWriter, r *http.Request) {
 }
 
 func getItemByID(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
 
+	params := mux.Vars(r)
+
+	for _, item := range items {
+		if item.ID == params["id"] {
+			json.NewEncoder(w).Encode(item)
+			return
+		}
+	}
+	json.NewEncoder(w).Encode(&Item{})
 }
 
 func createItem(w http.ResponseWriter, r *http.Request) {
@@ -55,9 +65,9 @@ func main() {
 	items = append(items, Item{ID: "1", Isbn: "1234", Title: "Book One", Author: &Author{Firstname: "Lorem", Lastname: "Ipsome"}})
 
 	r.HandleFunc("/api/items", getItems).Methods("GET")
-	r.HandleFunc("/api/getItems/{id}", getItemByID).Methods("GET")
-	r.HandleFunc("/api/addItem", createItem).Methods("POST")
-	r.HandleFunc("/api/updateItem", updateItem).Methods("PUT")
-	r.HandleFunc("/api/item/deleteItem", deleteItem).Methods("DELETE")
+	r.HandleFunc("/api/getitem/{id}", getItemByID).Methods("GET")
+	r.HandleFunc("/api/additem", createItem).Methods("POST")
+	r.HandleFunc("/api/updateitem", updateItem).Methods("PUT")
+	r.HandleFunc("/api/item/deleteitem", deleteItem).Methods("DELETE")
 	log.Fatal(http.ListenAndServe(":8000", r))
 }
