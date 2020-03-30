@@ -3,7 +3,9 @@ package main
 import (
 	"encoding/json"
 	"log"
+	"math/rand"
 	"net/http"
+	"strconv"
 
 	"github.com/gorilla/mux"
 )
@@ -46,7 +48,11 @@ func getItemByID(w http.ResponseWriter, r *http.Request) {
 }
 
 func createItem(w http.ResponseWriter, r *http.Request) {
-
+	var item Item
+	_ = json.NewDecoder(r.Body).Decode(&item)
+	item.ID = strconv.Itoa(rand.Intn(100000000))
+	items = append(items, item)
+	json.NewEncoder(w).Encode(item)
 }
 
 func updateItem(w http.ResponseWriter, r *http.Request) {
